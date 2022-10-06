@@ -11,16 +11,22 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 import { AssignementsComponent } from './assignements/assignements.component';
+import { AssignmentDetailComponent } from './assignements/assignment-detail/assignment-detail.component';
 import { RenduDirective } from './shared/rendu.directive';
 import { FormsModule } from '@angular/forms';
+import { AddAssignmentComponent } from './assignements/add-assignment/add-assignment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AssignementsComponent,
-    RenduDirective
+    RenduDirective,
+    AssignmentDetailComponent,
+    AddAssignmentComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,9 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     FormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

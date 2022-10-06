@@ -1,0 +1,7 @@
+<div class="container" *ngIf="assignementTransmis">
+    <mat-card>
+        <mat-card-title>{{assignementTransmis.nom}}</mat-card-title>
+        <mat-card-subtitle>{{assignementTransmis.dateDeRendu | date}}</mat-card-subtitle>
+    </mat-card>
+    <button mat-stroked-button color="danger" (click)="delete()">Delete</button>
+</div>

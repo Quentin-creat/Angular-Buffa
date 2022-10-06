@@ -7,9 +7,8 @@ import { Assignement } from './assignements.model';
   styleUrls: ['./assignements.component.css']
 })
 export class AssignementsComponent implements OnInit {
-
   nomProf: string = "Quentin wé";
-  assignments:Assignement[] = [{
+  assignments: Assignement[] = [{
     rendu: false,
     nom: "francais",
     dateDeRendu: new Date('2022-01-26')
@@ -30,23 +29,36 @@ export class AssignementsComponent implements OnInit {
     dateDeRendu: new Date('2022-12-30')
   }]
   ajoutActive = false;
-  nomDevoir:string = '';
+  nomDevoir: string = '';
   dateDeRendu!: Date;
+  assignementSelectionne!: Assignement;
+  formVisible = false;
+
   constructor() { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.ajoutActive = true;
-    }, 2000);
   }
 
-  onSubmit() {
-    const newAssignement = new Assignement();
-    newAssignement.nom = this.nomDevoir;
-    newAssignement.dateDeRendu = this.dateDeRendu;
-    newAssignement.rendu = false;
+  assignmentClique(assignment: Assignement) {
+    this.assignementSelectionne = assignment;
+  }
 
-    this.assignments.push(newAssignement);
+  onAddAssignementBtnClick() {
+    this.formVisible = true;
+  }
+
+  onNouvelAssignement(event: Assignement) {
+    this.assignments.push(event);
+    this.formVisible = false;
+  }
+
+  onDeleteAssignement(event: Assignement) {
+    for (let i = 0; i < this.assignments.length; i++) {
+      if (this.assignments[i] === event) {
+        this.assignments.splice(i, 1);
+        this.assignementSelectionne = this.assignments[i-1];
+      }
+    }
   }
 
 }
