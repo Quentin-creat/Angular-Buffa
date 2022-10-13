@@ -1,5 +1,9 @@
-<main class="container" *ngIf="!formVisible">
-    <button class="ajouterBtn" mat-flat-button color="accent" (click)="onAddAssignementBtnClick()">Ajouter assignement</button>
+<main class="container">
+    <div>
+        <a [routerLink]="['/add']">
+            <button class="ajouterBtn" mat-flat-button color="accent">Ajouter assignement</button></a>
+    </div>
+
     <mat-list *ngFor="let assignment of assignments; let indexOfelement=index;">
         <h3 mat-subheader>{{assignment.dateDeRendu | date}}</h3>
         <mat-list-item (click)="assignmentClique(assignment)">
@@ -14,5 +18,3 @@
     </mat-list>
     <app-assignment-detail [assignementTransmis]="assignementSelectionne"></app-assignment-detail>
 </main>
-
-<app-add-assignment (nouvelAssigment)="onNouvelAssignement($event)" *ngIf="formVisible"></app-add-assignment>
