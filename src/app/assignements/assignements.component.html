@@ -5,16 +5,19 @@
     </div>
 
     <mat-list *ngFor="let assignment of assignments; let indexOfelement=index;">
-        <h3 mat-subheader>{{assignment.dateDeRendu | date}}</h3>
-        <mat-list-item (click)="assignmentClique(assignment)">
-            <p appRendu *ngIf="assignment.rendu; else nonsoumis">
-                Devoir intitulé {{assignment.nom}} a été rendu
-            </p>
-            <ng-template #nonsoumis>
-                Le devoir {{assignment.nom}} n'a pas été rendu
-            </ng-template>
-            <mat-divider></mat-divider>
-        </mat-list-item>
+        <nav>
+            <a routerLink="/assignement/{{assignment.id}}">
+                <h3 mat-subheader>{{assignment.dateDeRendu | date}}</h3>
+                <mat-list-item (click)="assignmentClique(assignment)">
+                    <p appRendu *ngIf="assignment.rendu; else nonsoumis">
+                        Devoir intitulé {{assignment.nom}} a été rendu
+                    </p>
+                    <ng-template #nonsoumis>
+                        Le devoir {{assignment.nom}} n'a pas été rendu
+                    </ng-template>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </a>
+        </nav>
     </mat-list>
-    <app-assignment-detail [assignementTransmis]="assignementSelectionne"></app-assignment-detail>
 </main>

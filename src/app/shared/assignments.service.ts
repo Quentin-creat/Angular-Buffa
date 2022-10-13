@@ -8,21 +8,25 @@ import { LoggingService } from './logging.service';
 })
 export class AssignmentsService {
   assignments: Assignement[] = [{
+    id:1,
     rendu: false,
     nom: "francais",
     dateDeRendu: new Date('2022-01-26')
   },
   {
+    id:2,
     rendu: true,
     nom: "francais",
     dateDeRendu: new Date('2022-03-20')
   },
   {
+    id:3,
     rendu: true,
     nom: "francais",
     dateDeRendu: new Date('2022-11-06')
   },
   {
+    id:4,
     rendu: false,
     nom: "francais",
     dateDeRendu: new Date('2022-12-30')
@@ -56,5 +60,9 @@ export class AssignmentsService {
     return of("Assignement service : Assignement modifié");
   }
 
+  getAssignement(id):Observable<Assignement> {
+    console.log('id service : ', id);
+    return of(this.assignments.find(assignement => assignement.id === id))
+  }
 
 }
