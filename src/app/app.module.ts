@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AssignementsComponent } from './assignements/assignements.component';
 import { AssignmentDetailComponent } from './assignements/assignment-detail/assignment-detail.component';
@@ -41,7 +42,8 @@ import { AddAssignmentComponent } from './assignements/add-assignment/add-assign
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,5 +3,8 @@
         <mat-card-title>{{assignementTransmis.nom}}</mat-card-title>
         <mat-card-subtitle>{{assignementTransmis.dateDeRendu | date}}</mat-card-subtitle>
     </mat-card>
-    <button mat-stroked-button color="danger" (click)="delete()">Delete</button>
+    <div id="bottom">
+        <mat-checkbox *ngIf="!assignementTransmis.rendu" (click)="onAssignementRendu()">Devoir rendu</mat-checkbox>
+        <button mat-stroked-button color="danger" (click)="delete()">Delete</button>
+    </div>
 </div>

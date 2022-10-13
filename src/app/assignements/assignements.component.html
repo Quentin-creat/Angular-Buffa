@@ -12,7 +12,7 @@
             <mat-divider></mat-divider>
         </mat-list-item>
     </mat-list>
-    <app-assignment-detail (output)="onDeleteAssignement($event)" [assignementTransmis]="assignementSelectionne"></app-assignment-detail>
+    <app-assignment-detail [assignementTransmis]="assignementSelectionne"></app-assignment-detail>
 </main>
 
 <app-add-assignment (nouvelAssigment)="onNouvelAssignement($event)" *ngIf="formVisible"></app-add-assignment>

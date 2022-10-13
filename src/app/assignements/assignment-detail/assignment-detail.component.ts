@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, OnInit, Output } from '@angular/core';
+import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignement } from '../assignements.model';
 
 @Component({
@@ -9,15 +10,23 @@ import { Assignement } from '../assignements.model';
 export class AssignmentDetailComponent implements OnInit {
   @Input() assignementTransmis!: Assignement;
   @Output() nouvelAssigment = new EventEmitter<Assignement>();
-  @Output() output = new EventEmitter<Assignement>();
 
-  constructor() { }
+  constructor(private assignementService:AssignmentsService) { }
 
   ngOnInit(): void {
   }
 
   delete() {
-    this.output.emit(this.assignementTransmis);
+    this.assignementService.deleteAssignement(this.assignementTransmis).subscribe(message => {
+      console.log(message);
+    })
+    this.assignementTransmis = null;
+  }
+
+  onAssignementRendu() {
+    this.assignementService.updateAssignement(this.assignementTransmis).subscribe(message => {
+      console.log(message);
+    });
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignmentsService } from '../shared/assignments.service';
 import { Assignement } from './assignements.model';
 
 @Component({
@@ -7,36 +8,19 @@ import { Assignement } from './assignements.model';
   styleUrls: ['./assignements.component.css']
 })
 export class AssignementsComponent implements OnInit {
-  nomProf: string = "Quentin wé";
-  assignments: Assignement[] = [{
-    rendu: false,
-    nom: "francais",
-    dateDeRendu: new Date('2022-01-26')
-  },
-  {
-    rendu: true,
-    nom: "francais",
-    dateDeRendu: new Date('2022-03-20')
-  },
-  {
-    rendu: true,
-    nom: "francais",
-    dateDeRendu: new Date('2022-11-06')
-  },
-  {
-    rendu: false,
-    nom: "francais",
-    dateDeRendu: new Date('2022-12-30')
-  }]
+  assignments!: Assignement[];
   ajoutActive = false;
   nomDevoir: string = '';
   dateDeRendu!: Date;
   assignementSelectionne!: Assignement;
   formVisible = false;
 
-  constructor() { }
+  constructor(private assignementsService: AssignmentsService) { }
 
   ngOnInit(): void {
+    this.assignementsService.getAssignements().subscribe(assignments => {
+      this.assignments = assignments
+    })
   }
 
   assignmentClique(assignment: Assignement) {
@@ -48,17 +32,10 @@ export class AssignementsComponent implements OnInit {
   }
 
   onNouvelAssignement(event: Assignement) {
-    this.assignments.push(event);
+    this.assignementsService.addAssignement(event).subscribe(message => {
+      console.log(message);
+    })
     this.formVisible = false;
+    this.assignementSelectionne = null;
   }
-
-  onDeleteAssignement(event: Assignement) {
-    for (let i = 0; i < this.assignments.length; i++) {
-      if (this.assignments[i] === event) {
-        this.assignments.splice(i, 1);
-        this.assignementSelectionne = this.assignments[i-1];
-      }
-    }
-  }
-
 }
