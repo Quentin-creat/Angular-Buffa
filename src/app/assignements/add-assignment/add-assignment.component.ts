@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignement } from '../assignements.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-assignment',
@@ -11,7 +12,7 @@ export class AddAssignmentComponent implements OnInit {
   nomDevoir: string = '';
   dateDeRendu!: Date;
 
-  constructor(private assignementService: AssignmentsService) { }
+  constructor(private assignementService: AssignmentsService, private router:Router) { }
 
   ngOnInit(): void {
     console.log('add assignement');
@@ -26,6 +27,7 @@ export class AddAssignmentComponent implements OnInit {
     this.assignementService.addAssignement(newAssignement).subscribe(message => {
       console.log(message);
     })
+    this.router.navigate(['home']);
   }
 
 }

@@ -40,6 +40,9 @@ export class AssignmentsService {
   }
 
   addAssignement(assignement: Assignement): Observable<string> {
+    //get last id
+    let lastId = this.assignments[this.assignments.length - 1].id;
+    assignement.id = lastId + 1;
     this.assignments.push(assignement);
     this.loggingService.log(assignement.nom, 'ajouté');
     return of("Assignement service : Assignement ajouté");
