@@ -5,6 +5,13 @@
     </mat-card>
     <div id="bottom">
         <mat-checkbox *ngIf="!assignementTransmis.rendu" (click)="onAssignementRendu()">Devoir rendu</mat-checkbox>
+        <nav>
+            <a>
+                <button mat-stroked-button color="primary" (click)="onClickEdit()" [disabled]="!isAdmin()">
+                    Edit
+                </button>
+            </a>
+        </nav>
         <button mat-stroked-button color="danger" (click)="delete()">Delete</button>
     </div>
 </div>

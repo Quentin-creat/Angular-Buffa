@@ -14,12 +14,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AssignementsComponent } from './assignements/assignements.component';
 import { AssignmentDetailComponent } from './assignements/assignment-detail/assignment-detail.component';
 import { RenduDirective } from './shared/rendu.directive';
 import { FormsModule } from '@angular/forms';
 import { AddAssignmentComponent } from './assignements/add-assignment/add-assignment.component';
+import { EditAssignmentComponent } from './assignements/edit-assignment/edit-assignment.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { AddAssignmentComponent } from './assignements/add-assignment/add-assign
     AssignementsComponent,
     RenduDirective,
     AssignmentDetailComponent,
-    AddAssignmentComponent
+    AddAssignmentComponent,
+    EditAssignmentComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { AddAssignmentComponent } from './assignements/add-assignment/add-assign
     MatNativeDateModule,
     MatListModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
