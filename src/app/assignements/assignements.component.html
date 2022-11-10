@@ -2,6 +2,10 @@
     <div>
         <a [routerLink]="['/add']">
             <button class="ajouterBtn" mat-flat-button color="accent">Ajouter assignement</button></a>
+
+        <!-- <a (click)="peuplerBD()">
+            <button class="ajouterBtn" mat-flat-button color="accent">Peupler bdd</button>
+        </a> -->
     </div>
 
     <mat-list *ngFor="let assignment of assignments; let indexOfelement=index;">
@@ -20,4 +24,6 @@
             </a>
         </nav>
     </mat-list>
+    <mat-paginator [length]="totalDocs" [pageSize]="limit" [pageSizeOptions]="[10, 25, 50]" (page)="updatePage($event)" aria-label="Select page">
+    </mat-paginator>
 </main>
